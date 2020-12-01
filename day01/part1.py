@@ -19,7 +19,7 @@ def main():
     input_path = pathlib.Path(__file__).with_name("input.txt")
 
     with input_path.open() as f:
-        print(compute(f.readlines()))
+        print(compute(f))
 
 
 if __name__ == "__main__":
