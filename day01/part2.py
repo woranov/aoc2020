@@ -26,7 +26,11 @@ def compute(data):
 
 
 def main():
-    with open("input.txt") as f:
+    import pathlib
+
+    input_path = pathlib.Path(__file__).with_name("input.txt")
+
+    with input_path.open() as f:
         print(compute(f.readlines()))
 
 
