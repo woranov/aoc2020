@@ -2,6 +2,7 @@ __pycache__
 /.idea
 /.pytest_cache
 /.vscode
-/java_out
 /venv
 *.iml
+*.class
+*.exe
