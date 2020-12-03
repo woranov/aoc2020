@@ -1,7 +1,6 @@
 import os
 import sequtils
 import strutils
-import sugar
 
 
 proc compute(data: seq[string]): int =
@@ -11,7 +10,7 @@ proc compute(data: seq[string]): int =
 
   (0..<height)
     .toSeq()
-    .filter(i => data[i][i * 3 mod width] == '#')
+    .filterIt(data[it][it * 3 mod width] == '#')
     .len()
 
 
