@@ -2,14 +2,14 @@
 
 ## Python
 
-### Test case
-```console
-pytest dayXX
-```
-
 ```console
 python -m dayXX.part1
 python -m dayXX.part2
+```
+
+### Test case
+```console
+pytest dayXX
 ```
 
 ## Elixir
