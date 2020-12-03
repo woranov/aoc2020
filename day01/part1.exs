@@ -13,7 +13,7 @@ defmodule Day01.Part1 do
   end
 
   def main do
-    File.read!("input.txt")
+    File.read!(Path.join(__DIR__, "input.txt"))
     |> compute
     |> IO.inspect()
   end
