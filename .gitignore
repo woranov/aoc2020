@@ -6,3 +6,5 @@ __pycache__
 *.iml
 *.class
 *.exe
+*.hi
+*.o
