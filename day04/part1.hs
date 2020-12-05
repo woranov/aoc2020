@@ -1,7 +1,6 @@
-import           Data.Function
-import           Data.List
-import           System.Environment
-import           System.FilePath
+import Data.List
+import System.Environment
+import System.FilePath
 
 
 -- implemented most of the stuff before i found out about haskell's "standard library"
@@ -51,11 +50,11 @@ checkPassport p = intersect (map fst p) required `sameElems` required
 
 
 compute :: [String] -> Int
-compute ls = ls & blocks & map passport & filter checkPassport & length
+compute ls = length . (filter checkPassport) . (map passport) . blocks $ ls
 
 
 main :: IO ()
 main = do
   exePath <- getExecutablePath
   content <- readFile (replaceFileName exePath "input.txt")
-  content & lines & compute & show & putStrLn
+  putStrLn . show . compute . lines $ content
