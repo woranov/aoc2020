@@ -46,3 +46,10 @@ tsc
 node .\dayXX\part1.js
 node .\dayXX\part2.js
 ```
+
+## Kotlin
+```console
+kotlinc -cp ./dayXX/ -script ./dayXX/part1.kts 2>$null
+kotlinc -cp ./dayXX/ -script ./dayXX/part2.kts 2>$null
+```
+(`2>$null` hides `stderr` in powershell)
