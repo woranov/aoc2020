@@ -24,3 +24,16 @@ repos:
     rev: v1.0.0
     hooks:
       - id: mix-format
+-   repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v7.15.0
+    hooks:
+    -   id: eslint
+        args: ["--fix"]
+        additional_dependencies:
+            - "@typescript-eslint/parser@4.9.0"
+            - "@typescript-eslint/eslint-plugin@4.9.0"
+            - eslint-config-prettier@7.0.0
+            - eslint-plugin-prettier@3.2.0
+            - prettier@2.2.1
+        files: \.ts$
+        types: [file]

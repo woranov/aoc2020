@@ -39,3 +39,10 @@ ghc -v0 ./dayXX/part1.hs && ./dayXX/part1
 ghc -v0 ./dayXX/part2.hs && ./dayXX/part2
 rm ./dayXX/* -Include *.exe,*.hi,*.o
 ```
+
+## TypeScript
+```console
+tsc
+node .\dayXX\part1.js
+node .\dayXX\part2.js
+```
