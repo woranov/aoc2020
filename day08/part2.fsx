@@ -4,8 +4,8 @@ type Op = string * int
 
 let parseInstructions (lines: seq<string>) =
     lines
-    |> Seq.map(fun line -> line.Split " ")
-    |> Seq.map(fun op -> (op.[0], int op.[1]))
+    |> Seq.map (fun line -> line.Split " ")
+    |> Seq.map (fun op -> (op.[0], int op.[1]))
     |> Seq.toArray
 
 let rec interpret acc row visited switched (ops: array<Op>) =
