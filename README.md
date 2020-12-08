@@ -53,3 +53,10 @@ kotlinc -cp ./dayXX/ -script ./dayXX/part1.kts 2>$null
 kotlinc -cp ./dayXX/ -script ./dayXX/part2.kts 2>$null
 ```
 (`2>$null` hides `stderr` in powershell)
+
+
+## F#
+```console
+dotnet fsi .\dayXX\part1.fsx
+dotnet fsi .\dayXX\part2.fsx
+```
