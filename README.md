@@ -18,6 +18,12 @@ elixir ./dayXX/part1.exs
 elixir ./dayXX/part2.exs
 ```
 
+## Powershell
+```console
+pwsh ./dayXX/part1.ps1
+pwsh ./dayXX/part2.ps1
+```
+
 ## Java
 ```console
 javac --enable-preview --release 15 -cp ./dayXX/ ./dayXX/*.java
