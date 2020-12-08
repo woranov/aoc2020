@@ -29,7 +29,7 @@ let rec interpret acc row visited switched (ops: array<Op>) =
             interpret acc (row + 1) (Set.add row visited) switched ops
             |> Option.orElse
                    (interpret acc (row + n) (Set.add row visited) true ops)
-        | illegalOp -> failwith $"illegal op {invalidOp}"
+        | illegalOp -> failwith $"illegal op {illegalOp}"
 
 let compute lines =
     lines

@@ -16,7 +16,7 @@ let rec interpret acc row visited (ops: array<Op>) =
         | "acc", n -> interpret (acc + n) (row + 1) (Set.add row visited) ops
         | "jmp", n -> interpret acc (row + n) (Set.add row visited) ops
         | "nop", _ -> interpret acc (row + 1) (Set.add row visited) ops
-        | illegalOp -> failwith $"illegal op {invalidOp}"
+        | illegalOp -> failwith $"illegal op {illegalOp}"
 
 let compute lines =
     lines
