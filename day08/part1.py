@@ -24,7 +24,7 @@ def compute(data):
         visited.add(row)
 
         op, num_s = data[row].split()
-        num = int(num_s.lstrip("+"))
+        num = int(num_s)
 
         if op == "nop":
             row += 1

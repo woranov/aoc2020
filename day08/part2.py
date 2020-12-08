@@ -51,7 +51,7 @@ def compute(data):
         return acc
 
     return execute(
-        ops=[(op, int(num_s.lstrip("+"))) for op, num_s in map(str.split, data)],
+        ops=[(op, int(num_s)) for op, num_s in map(str.split, data)],
         acc=0,
         row=0,
         visited=set(),
