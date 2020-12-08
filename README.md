@@ -49,8 +49,8 @@ rm ./dayXX/* -Include *.exe,*.hi,*.o
 ## TypeScript
 ```console
 tsc
-node .\dayXX\part1.js
-node .\dayXX\part2.js
+node ./dayXX/part1.js
+node ./dayXX/part2.js
 ```
 
 ## Kotlin
@@ -63,6 +63,6 @@ kotlinc -cp ./dayXX/ -script ./dayXX/part2.kts 2>$null
 
 ## F#
 ```console
-dotnet fsi .\dayXX\part1.fsx
-dotnet fsi .\dayXX\part2.fsx
+dotnet fsi ./dayXX/part1.fsx
+dotnet fsi ./dayXX/part2.fsx
 ```
