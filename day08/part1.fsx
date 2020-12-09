@@ -3,7 +3,7 @@ open System.IO
 type OpCode = Acc | Jmp | Nop
 type Op = OpCode * int
 
-let parseInstructions (lines: seq<string>) =
+let parseInstructions (lines: string seq) =
     lines
     |> Seq.map (fun line -> line.Split " ")
     |> Seq.map (fun op ->
@@ -15,7 +15,7 @@ let parseInstructions (lines: seq<string>) =
     )
     |> Seq.toArray
 
-let rec interpret acc row visited (ops: array<Op>) =
+let rec interpret acc row visited (ops: Op array) =
     if Set.contains row visited then
         acc
     else

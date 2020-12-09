@@ -4,10 +4,10 @@ type OpCode = Acc | Jmp | Nop
 type Op = OpCode * int
 type Program =
     {
-        Ops: array<Op>
+        Ops: Op array
         Acc: int
         Row: int
-        Visited: Set<int>
+        Visited: int Set
         Switched: bool
     }
 
@@ -21,7 +21,7 @@ type Program =
     member this.Next =
         { this with Row = this.Row + 1; Visited = Set.add this.Row this.Visited }
 
-let parseInstructions (lines: seq<string>) =
+let parseInstructions (lines: string seq) =
     lines
     |> Seq.map (fun line -> line.Split " ")
     |> Seq.map (fun op ->
