@@ -8,4 +8,5 @@ __pycache__
 *.exe
 *.hi
 *.o
+package-lock.json
 /node_modules
