@@ -1,0 +1,9 @@
+[package]
+name = "day09"
+version = "1.0.0"
+edition = "2018"
+
+
+[[bin]]
+name = "part1"
+path = "part1.rs"

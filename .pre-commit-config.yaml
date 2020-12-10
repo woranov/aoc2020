@@ -9,8 +9,8 @@ repos:
 -   repo: https://github.com/psf/black
     rev: 20.8b1
     hooks:
-        - id: black
-          language_version: python3
+    -   id: black
+        language_version: python3
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.4
     hooks:
@@ -23,7 +23,7 @@ repos:
 -   repo: https://gitlab.com/jvenom/elixir-pre-commit-hooks
     rev: v1.0.0
     hooks:
-      - id: mix-format
+    -   id: mix-format
 -   repo: https://github.com/pre-commit/mirrors-eslint
     rev: v7.15.0
     hooks:
@@ -37,3 +37,9 @@ repos:
             - prettier@2.2.1
         files: \.ts$
         types: [file]
+-   repo: https://github.com/doublify/pre-commit-rust
+    rev: v1.0
+    hooks:
+    -   id: fmt
+    -   id: cargo-check
+    -   id: clippy
