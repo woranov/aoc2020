@@ -11,7 +11,7 @@ let parseInstructions (lines: string seq) =
         | [| "acc"; n |] -> (Acc, int n)
         | [| "jmp"; n |] -> (Jmp, int n)
         | [| "nop"; n |] -> (Nop, int n)
-        | illegalOp      -> failwith $"illegal op {invalidOp}"
+        | illegalOp      -> failwith $"illegal op {illegalOp}"
     )
     |> Seq.toArray
 
