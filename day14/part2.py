@@ -16,7 +16,7 @@ def compute(data):
     mem = {}
     masks = []
 
-    instructions = ((var, val) for var, val in map(lambda s: s.split(" = "), data))
+    instructions = map(lambda s: s.split(" = "), data)
 
     for var, val in instructions:
         if var == "mask":
