@@ -23,8 +23,7 @@ def compute(lines)
       val = val.to_u64
 
       mask_overwrites.each { |mask_overwrite|
-        new_addr = addr & mask_overwrite
-        mem[new_addr] = val
+        mem[addr & mask_overwrite] = val
       }
     else
       raise "invalid target #{var}"
