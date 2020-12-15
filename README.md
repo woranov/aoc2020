@@ -71,3 +71,9 @@ dotnet fsi ./dayXX/part2.fsx
 cargo run -q -p dayXX --bin part1
 cargo run -q -p dayXX --bin part2
 ```
+
+## Crystal
+```console
+crystal dayXX/part1.cr
+crystal dayXX/part2.cr
+```

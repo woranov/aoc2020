@@ -43,3 +43,10 @@ repos:
     -   id: fmt
     -   id: cargo-check
     -   id: clippy
+-   repo: local
+    hooks:
+    -   id: crystal-format
+        name: crystal-format
+        entry: crystal tool format
+        language: system
+        files: \.cr$
