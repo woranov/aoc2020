@@ -16,7 +16,7 @@ def compute(data):
     >>> compute([".#.", "..#", "###"])
     112
     """
-    grid = collections.defaultdict(bool)
+    grid = {}
 
     for y, row in enumerate(data):
         for x, cell in enumerate(row):
@@ -27,18 +27,16 @@ def compute(data):
         grid_old = grid.copy()
         grid.clear()
 
-        for x, y, z in {
-            nb_cell
-            for cell, active in grid_old.items()
-            for nb_cell in neighbors(*cell)
-            if active
-        }:
-            nb_count = sum(grid_old[nb] for nb in neighbors(x, y, z))
-            if grid_old[(x, y, z)]:
+        neighbor_counter = collections.Counter(
+            nb_coord for coord in grid_old for nb_coord in neighbors(*coord)
+        )
+
+        for coord, nb_count in neighbor_counter.items():
+            if coord in grid_old:
                 if nb_count in (2, 3):
-                    grid[(x, y, z)] = True
+                    grid[coord] = True
             elif nb_count == 3:
-                grid[(x, y, z)] = True
+                grid[coord] = True
 
     return sum(grid.values())
 
