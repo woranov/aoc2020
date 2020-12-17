@@ -7,9 +7,7 @@ def neighbors(x, y, z):
     for x_n in range(x - 1, x + 2):
         for y_n in range(y - 1, y + 2):
             for z_n in range(z - 1, z + 2):
-                if (x, y, z) == (x_n, y_n, z_n):
-                    pass
-                else:
+                if (x, y, z) != (x_n, y_n, z_n):
                     yield x_n, y_n, z_n
 
 
@@ -52,7 +50,6 @@ def main():
 
     with input_path.open() as f:
         print(compute(f.read().splitlines()))
-        # print(compute([".#.", "..#", "###"]))
 
 
 if __name__ == "__main__":
