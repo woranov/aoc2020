@@ -77,3 +77,10 @@ cargo run -q -p dayXX --bin part2
 crystal dayXX/part1.cr
 crystal dayXX/part2.cr
 ```
+
+## C
+```console
+gcc ./dayXX/part1.c -o ./dayXX/part1 && ./dayXX/part1
+gcc ./dayXX/part2.c -o ./dayXX/part2 && ./dayXX/part2
+rm ./dayXX/*.exe
+```
