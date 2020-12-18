@@ -29,12 +29,12 @@ void cycle(grid_t grid) {
         for (int dy = -1; dy < 2; dy++)
         for (int dz = -1; dz < 2; dz++)
         for (int dw = -1; dw < 2; dw++) {
+            if (dx == 0 && dy == 0 && dz == 0 && dw == 0)
+                continue;
             nb_x = x + dx;
             nb_y = y + dy;
             nb_z = z + dz;
             nb_w = w + dw;
-            if (nb_x == x && nb_y == y && nb_z == z && nb_w == w)
-                continue;
             neighbor_counter[nb_x][nb_y][nb_z][nb_w] += 1;
         }
 

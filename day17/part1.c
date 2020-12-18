@@ -27,13 +27,13 @@ void cycle(grid_t grid) {
         for (int dx = -1; dx < 2; dx++)
         for (int dy = -1; dy < 2; dy++)
         for (int dz = -1; dz < 2; dz++) {
+            if (dx == 0 && dy == 0 && dz == 0)
+                continue;
             nb_x = x + dx;
             nb_y = y + dy;
             nb_z = z + dz;
-            if (nb_x == x && nb_y == y && nb_z == z)
-                continue;
             neighbor_counter[nb_x][nb_y][nb_z] += 1;
-    }
+        }
 
     for (int x = 0; x < MAX; x++)
     for (int y = 0; y < MAX; y++)
