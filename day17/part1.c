@@ -2,7 +2,6 @@
 #include <string.h>
 
 
-#define DIMS 3
 #define START_SIZE 8
 #define CYCLES 6
 #define MAX (START_SIZE + CYCLES + 4)
