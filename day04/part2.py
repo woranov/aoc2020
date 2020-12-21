@@ -54,18 +54,14 @@ def compute(data):
             and int(num_s) in valid_per_unit_hgt_ranges[unit]
         ),
         "hcl": lambda x: (
-            x.startswith("#")
-            and len(hexnum_s := x[1:]) == 6
-            and set(hexnum_s) <= valid_hexdigits
+            x.startswith("#") and len(hexnum_s := x[1:]) == 6 and set(hexnum_s) <= valid_hexdigits
         ),
         "ecl": lambda x: x in valid_eyecolors,
         "pid": lambda x: x.isnumeric() and len(x) == 9,
     }
     required = frozenset(rules)
     passports = (
-        dict(
-            field.split(":") for line in block.splitlines() for field in line.split(" ")
-        )
+        dict(field.split(":") for line in block.splitlines() for field in line.split(" "))
         for block in data
     )
 

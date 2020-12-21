@@ -30,9 +30,7 @@ def compute(data):
                 visited.add(row)
 
             op, num = ops[row]
-            switch = functools.partial(
-                execute, ops=ops, acc=acc, visited=visited, switched=True
-            )
+            switch = functools.partial(execute, ops=ops, acc=acc, visited=visited, switched=True)
 
             if op == "acc":
                 acc += num

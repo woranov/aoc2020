@@ -30,10 +30,7 @@ def compute(data):
             # noinspection PyTypeChecker
             for comb in map(iter, itertools.product("01", repeat=mask.count("X"))):
                 mask_overwrite = int(
-                    "".join(
-                        next(comb) if bit == "X" else bit
-                        for bit in mask.replace("0", "1")
-                    ),
+                    "".join(next(comb) if bit == "X" else bit for bit in mask.replace("0", "1")),
                     2,
                 )
                 mem[addr & mask_overwrite] = int(val)

@@ -34,9 +34,7 @@ def compute(data):
     for nearby in nearby_tickets.splitlines():
         fields = map(int, nearby.split(","))
         invalid += sum(
-            filter(
-                lambda f: not any(f in rng for rule_ in rules for rng in rule_), fields
-            )
+            filter(lambda f: not any(f in rng for rule_ in rules for rng in rule_), fields)
         )
     return invalid
 

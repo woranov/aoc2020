@@ -76,10 +76,7 @@ def compute(data):
     while True:
         try:
             term_n, term_s = next(
-                (rn, rs)
-                for rn, rs in rules.items()
-                if rn != 0
-                if not any(s.isdigit() for s in rs)
+                (rn, rs) for rn, rs in rules.items() if rn != 0 if not any(s.isdigit() for s in rs)
             )
             if "|" in term_s:
                 term_s = f"({term_s})"
@@ -109,9 +106,7 @@ def compute(data):
 
     pat = re.compile(rules[0].replace(" ", ""))
 
-    return sum(
-        pat.fullmatch(message) is not None for message in messages_s.splitlines()
-    )
+    return sum(pat.fullmatch(message) is not None for message in messages_s.splitlines())
 
 
 def main():

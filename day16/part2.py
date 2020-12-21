@@ -20,12 +20,9 @@ def compute(data):
 
     nearby = {
         fields
-        for fields in (
-            tuple(map(int, nearby.split(","))) for nearby in nearby.splitlines()
-        )
+        for fields in (tuple(map(int, nearby.split(","))) for nearby in nearby.splitlines())
         if not any(
-            all(f not in rng for ruleset in rules.values() for rng in ruleset)
-            for f in fields
+            all(f not in rng for ruleset in rules.values() for rng in ruleset) for f in fields
         )
     }
 

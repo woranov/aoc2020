@@ -40,9 +40,7 @@ def compute(data):
             "↘": tuple(zip(range(r - 1, -1, -1), range(c - 1, -1, -1))),
         }
 
-    non_floor_seats = [
-        (r, c) for r in range(rows) for c in range(cols) if grid[r][c] != "."
-    ]
+    non_floor_seats = [(r, c) for r in range(rows) for c in range(cols) if grid[r][c] != "."]
 
     while True:
         new_grid = [row[:] for row in grid]

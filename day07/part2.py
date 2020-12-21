@@ -36,9 +36,7 @@ def compute(data):
             rules[bag].append(BagChild(bag=child, count=int(count)))
 
     def total(children):
-        return 1 + sum(
-            child_count * total(rules[child_bag]) for child_bag, child_count in children
-        )
+        return 1 + sum(child_count * total(rules[child_bag]) for child_bag, child_count in children)
 
     return total(rules["shiny gold"]) - 1
 

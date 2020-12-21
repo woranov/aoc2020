@@ -25,11 +25,7 @@ def compute(data):
     required = frozenset(("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"))
     return sum(
         required
-        <= {
-            field.split(":")[0]
-            for line in block.splitlines()
-            for field in line.split(" ")
-        }
+        <= {field.split(":")[0] for line in block.splitlines() for field in line.split(" ")}
         for block in data
     )
 

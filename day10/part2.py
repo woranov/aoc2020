@@ -27,9 +27,7 @@ def compute(data):
 
     arrangements = 1
 
-    diff_groups = itertools.groupby(
-        b - a for a, b in zip([inlet] + data, data + [outlet])
-    )
+    diff_groups = itertools.groupby(b - a for a, b in zip([inlet] + data, data + [outlet]))
 
     for diff, chain in diff_groups:
         if diff == max_diff:
