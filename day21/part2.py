@@ -20,7 +20,7 @@ def compute(data):
 
         for allergen in allergens:
             if allergen not in ingredient_candidates:
-                ingredient_candidates[allergen] = ingredients
+                ingredient_candidates[allergen] = ingredients.copy()
             else:
                 ingredient_candidates[allergen] &= ingredients
 
