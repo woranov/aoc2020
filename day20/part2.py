@@ -146,7 +146,9 @@ def compute(data):
     square_width = int(len(tiles) ** 0.5)
 
     def first_row():
-        row = [
+        row = []
+
+        row += [
             curr_tile := next(
                 tile
                 for tile_id, common_edges in corner_tile_edges.items()
@@ -156,45 +158,39 @@ def compute(data):
             )
         ]
         del corner_tile_edges[curr_tile.tile_id]
-
-        return (
-            row
-            + [
-                curr_tile := pop_tile(border_tile_edges, left=curr_tile.right)
-                for _ in range(square_width - 2)
-            ]
-            + [pop_tile(corner_tile_edges, left=curr_tile.right)]
-        )
+        row += [
+            curr_tile := pop_tile(border_tile_edges, left=curr_tile.right)
+            for _ in range(square_width - 2)
+        ]
+        row += [pop_tile(corner_tile_edges, left=curr_tile.right)]
+        return row
 
     def mid_row(row_before):
-        return (
-            [curr_tile := pop_tile(border_tile_edges, top=row_before[0].bottom)]
-            + [
-                curr_tile := pop_tile(
-                    inside_tile_edges, top=row_before[i].bottom, left=curr_tile.right
-                )
-                for i in range(1, square_width - 1)
-            ]
-            + [pop_tile(border_tile_edges, top=row_before[-1].bottom, left=curr_tile.right)]
-        )
+        row = []
+
+        row += [curr_tile := pop_tile(border_tile_edges, top=row_before[0].bottom)]
+        row += [
+            curr_tile := pop_tile(inside_tile_edges, top=row_before[i].bottom, left=curr_tile.right)
+            for i in range(1, square_width - 1)
+        ]
+        row += [pop_tile(border_tile_edges, top=row_before[-1].bottom, left=curr_tile.right)]
+        return row
 
     def last_row(row_before):
-        return (
-            [curr_tile := pop_tile(corner_tile_edges, top=row_before[0].bottom)]
-            + [
-                curr_tile := pop_tile(
-                    border_tile_edges, top=row_before[i].bottom, left=curr_tile.right
-                )
-                for i in range(1, square_width - 1)
-            ]
-            + [pop_tile(corner_tile_edges, top=row_before[-1].bottom, left=curr_tile.right)]
-        )
+        row = []
 
-    rows = (
-        [curr_row := first_row()]
-        + [curr_row := mid_row(curr_row) for _ in range(square_width - 2)]
-        + [last_row(curr_row)]
-    )
+        row += [curr_tile := pop_tile(corner_tile_edges, top=row_before[0].bottom)]
+        row += [
+            curr_tile := pop_tile(border_tile_edges, top=row_before[i].bottom, left=curr_tile.right)
+            for i in range(1, square_width - 1)
+        ]
+        row += [pop_tile(corner_tile_edges, top=row_before[-1].bottom, left=curr_tile.right)]
+        return row
+
+    rows = []
+    rows += [curr_row := first_row()]
+    rows += [curr_row := mid_row(curr_row) for _ in range(square_width - 2)]
+    rows += [last_row(curr_row)]
 
     image = [
         "".join(sym_row)
