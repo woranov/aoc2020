@@ -83,9 +83,11 @@ def compute(data):
     for i in range(moves):
         picked_up = cup[1:4]
 
-        values = ((int(cup) - delta - 1) % maximum + 1 for delta in range(1, 5))
-        destination_value = next(value for value in values if value not in {*picked_up})
-
+        destination_value = next(
+            v
+            for v in ((int(cup) - delta - 1) % maximum + 1 for delta in range(1, 5))
+            if v not in picked_up
+        )
         destination_cup = by_value[destination_value]
 
         cup.next = picked_up[-1].next
