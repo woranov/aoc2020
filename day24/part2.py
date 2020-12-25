@@ -41,32 +41,30 @@ def compute(data):
     >>> compute(_TESTCASE)
     2208
     """
-    tiles_facing_black = collections.defaultdict(bool)
+    tiles_facing_black = set()
 
     for steps in data:
         position = sum(DIRECTIONS_DELTAS[direction] for direction in DIRECTIONS_PAT.findall(steps))
-        tiles_facing_black[position] ^= True
+        tiles_facing_black ^= {position}
 
     for _ in range(100):
         neighbor_counter = collections.Counter()
 
-        for tile, facing_black in tiles_facing_black.items():
-            if facing_black:
-                # always include this tile but dont change the count if it was already included
-                neighbor_counter[tile] += 0
-                for delta in DIRECTIONS_DELTAS.values():
-                    neighbor = tile + delta
-                    neighbor_counter[neighbor] += 1
+        for tile in tiles_facing_black:
+            # always include this tile but dont change the count if it was already included
+            neighbor_counter[tile] += 0
+            for delta in DIRECTIONS_DELTAS.values():
+                neighbor = tile + delta
+                neighbor_counter[neighbor] += 1
 
         for tile, black_nbs in tuple(neighbor_counter.items()):
-            should_flip = black_nbs not in (1, 2) if tiles_facing_black[tile] else black_nbs == 2
+            should_flip = black_nbs not in (1, 2) if tile in tiles_facing_black else black_nbs == 2
             if not should_flip:
                 del neighbor_counter[tile]
 
-        for tile in neighbor_counter:
-            tiles_facing_black[tile] ^= True
+        tiles_facing_black ^= set(neighbor_counter)
 
-    return sum(tiles_facing_black.values())
+    return len(tiles_facing_black)
 
 
 def main():

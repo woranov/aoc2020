@@ -1,4 +1,3 @@
-import collections
 import re
 
 _TESTCASE = """\
@@ -41,13 +40,13 @@ def compute(data):
     >>> compute(_TESTCASE)
     10
     """
-    tiles_facing_black = collections.defaultdict(bool)
+    tiles_facing_black = set()
 
     for steps in data:
         position = sum(DIRECTIONS_DELTAS[direction] for direction in DIRECTIONS_PAT.findall(steps))
-        tiles_facing_black[position] ^= True
+        tiles_facing_black ^= {position}
 
-    return sum(tiles_facing_black.values())
+    return len(tiles_facing_black)
 
 
 def main():
